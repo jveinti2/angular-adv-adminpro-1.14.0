@@ -1,0 +1,17 @@
+<aside class="left-sidebar">
+  <div class="scroll-sidebar m-2">
+    <nav class="sidebar-nav bg-light border-right">
+      <div class="list-group">
+        <a
+          *ngFor="let item of menuItems"
+          class="list-group-item list-group-item-action"
+          [routerLink]="item.url"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          {{ item.titulo }}
+        </a>
+      </div>
+    </nav>
+  </div>
+</aside>

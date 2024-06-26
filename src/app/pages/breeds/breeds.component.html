@@ -1,0 +1,25 @@
+<input
+  type="text"
+  class="form-control"
+  placeholder="Search"
+  #txtTagInput
+  (keyup.enter)="searchBreed()"
+/>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">temperament</th>
+      <th scope="col">origin</th>
+      <th scope="col">description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let breed of listBreeds">
+      <td>{{ breed.name }}</td>
+      <td>{{ breed.temperament }}</td>
+      <td>{{ breed.origin }}</td>
+      <td>{{ breed.description }}</td>
+    </tr>
+  </tbody>
+</table>

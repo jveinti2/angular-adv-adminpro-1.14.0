@@ -1,0 +1,93 @@
+<!-- haz dos columnas que se coviertan en 1 en moviul -->
+<div class="row">
+  <div class="col-md-6 col-sm-12 text-center">
+    <select
+      (change)="onSelectBreed($event.target.value)"
+      class="form-select mb-4"
+      aria-label="Default select example"
+    >
+      <option selected>Select Breed</option>
+      <option *ngFor="let item of breeds" [value]="item.id">
+        {{ item.name }}
+      </option>
+    </select>
+    <div
+      id="carouselExample"
+      class="carousel slide mx-auto"
+      style="max-width: 500px"
+    >
+      <div class="carousel-inner">
+        <div
+          *ngFor="let item of breedImages; let i = index"
+          [class.active]="i === 0"
+          class="carousel-item"
+        >
+          <img [src]="item.url" class="d-block w-100" alt="..." />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-12">
+    <div *ngIf="selectedBreed" class="card my-3 mx-auto">
+      <div class="card-body">
+        <h5 class="card-title">{{ selectedBreed.name }}</h5>
+        <p class="card-text">{{ selectedBreed.description }}</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Origin:</strong> {{ selectedBreed.origin }}
+          </li>
+          <li class="list-group-item">
+            <strong>Life Span:</strong> {{ selectedBreed.life_span }} years
+          </li>
+          <li class="list-group-item">
+            <strong>Temperament:</strong> {{ selectedBreed.temperament }}
+          </li>
+          <li class="list-group-item">
+            <strong>Adaptability:</strong> {{ selectedBreed.adaptability }}
+          </li>
+          <li class="list-group-item">
+            <strong>Affection Level:</strong>
+            {{ selectedBreed.affection_level }}
+          </li>
+          <li class="list-group-item">
+            <strong>Child Friendly:</strong> {{ selectedBreed.child_friendly }}
+          </li>
+          <li class="list-group-item">
+            <strong>Dog Friendly:</strong> {{ selectedBreed.dog_friendly }}
+          </li>
+          <li class="list-group-item">
+            <strong>Energy Level:</strong> {{ selectedBreed.energy_level }}
+          </li>
+        </ul>
+        <div class="card-body">
+          <a
+            *ngIf="selectedBreed.wikipedia_url"
+            href="{{ selectedBreed.wikipedia_url }}"
+            class="btn btn-primary"
+            target="_blank"
+            >More Info</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
